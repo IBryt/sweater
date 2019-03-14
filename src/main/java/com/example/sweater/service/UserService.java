@@ -4,6 +4,7 @@ import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
 import com.example.sweater.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
+    @Value("${hostname}")
+    private String hostname;
+
+    @Value("${protocol}")
+    private String protocol;
+
     @Autowired
     private UserRepo userRepo;
 
@@ -51,8 +58,8 @@ public class UserService implements UserDetailsService {
     private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s%s. Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
-                    user.getUsername(), System.lineSeparator(), user.getActivationCode()
+                    "Hello, %s%s. Welcome to Sweater. Please, visit next link: %s%s/activate/%s",
+                    user.getUsername(), System.lineSeparator(), protocol, hostname, user.getActivationCode()
             );
             mailSendler.send(user.getEmail(), "Activation code", message);
         }
