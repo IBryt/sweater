@@ -97,6 +97,10 @@ public class MainController {
             Model model,
             @RequestParam(required = false) Message message
     ) {
+        model.addAttribute("userChannel", user);
+        model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
+        model.addAttribute("subscribersCount", user.getSubscribers().size());
+        model.addAttribute("isSubscriber", user.getSubscribers().contains(currentUser));
         model.addAttribute("messages", user.getMessages());
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser",currentUser.equals(user));
@@ -124,6 +128,6 @@ public class MainController {
 
             messageRepo.save(message);
         }
-        return "redirect:/user-messages/" + user.getId();
+        return "redirect:/user-messages/" + user;
     }
 }

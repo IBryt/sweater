@@ -109,4 +109,14 @@ public class UserService implements UserDetailsService {
         return (val1 != null && !val1.equals(val2)
                 || val2 != null && !val2.equals(val1));
     }
+
+    public void subscribe(User currentUser, User user) {
+        user.getSubscribers().add(currentUser);
+        userRepo.save(user);
+    }
+
+    public void unsubscribe(User currentUser, User user) {
+        user.getSubscribers().remove(currentUser);
+        userRepo.save(user);
+    }
 }
