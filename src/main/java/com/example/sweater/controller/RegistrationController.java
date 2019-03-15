@@ -1,11 +1,11 @@
 package com.example.sweater.controller;
 
+import com.example.sweater.controller.util.ControllersUtil;
 import com.example.sweater.domain.User;
 import com.example.sweater.domain.dto.CaptchaResponseDto;
 import com.example.sweater.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class RegistrationController {
