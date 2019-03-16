@@ -120,7 +120,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <spring.datasource.url>jdbc:postgresql://127.0.0.1:5432/sweatertest</spring.datasource.url>
+                <spring.datasource.url>jdbc:postgresql://127.0.0.1:5432/testbase</spring.datasource.url>
                 <spring.datasource.username>postgres</spring.datasource.username>
                 <spring.datasource.password>password</spring.datasource.password>
             </properties>

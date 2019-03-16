@@ -7,7 +7,7 @@ services:
 - postgresql
 
 before_install:
-- psql -c 'create database sweater;' -U postgres
+- psql -c 'create database testbase;' -U postgres
 
 cache:
   directories:
