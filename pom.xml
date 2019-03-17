@@ -77,12 +77,6 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.4.0</version>
-            <scope>runtime</scope>
-        </dependency>
         <!--<dependency>-->
             <!--<groupId>org.hamcrest</groupId>-->
             <!--<artifactId>hamcrest-all</artifactId>-->
@@ -105,33 +99,4 @@
          </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>travis</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.datasource.url>jdbc:postgresql://localhost/travis</spring.datasource.url>
-                <spring.datasource.username>postgres</spring.datasource.username>
-                <spring.datasource.password></spring.datasource.password>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <spring.datasource.url>jdbc:postgresql://127.0.0.1:5432/testbase</spring.datasource.url>
-                <spring.datasource.username>postgres</spring.datasource.username>
-                <spring.datasource.password>password</spring.datasource.password>
-            </properties>
-        </profile>
-        <profile>
-            <id>production</id>
-            <properties>
-                <spring.datasource.url>jdbc:postgresql://ec2-79-125-4-72.eu-west-1.compute.amazonaws.com:5432/dan19f98bhmbcv?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</spring.datasource.url>
-                <spring.datasource.username>postgres</spring.datasource.username>
-                <spring.datasource.password>password</spring.datasource.password>
-            </properties>
-        </profile>
-    </profiles>
 </project>
